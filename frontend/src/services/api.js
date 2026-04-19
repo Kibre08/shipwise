@@ -18,6 +18,6 @@ export const getCourierTasks = () => api.get('/courier/tasks');
 export const assignCourier = (trackingId, data) => api.patch(`/assign/${trackingId}`, data);
 export const cancelShipment = (trackingId) => api.delete(`/cancel/${trackingId}`);
 export const getAnalytics = () => api.get('/analytics');
-export const getAllCouriers = () => axios.get('http://localhost:5000/api/auth/couriers');
+export const getAllCouriers = () => axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/auth/couriers');
 
 export default api;
