@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1); // Trust Render's load balancer to allow Secure cookies
 app.use(express.json());
 app.use(cookieParser());
 
