@@ -70,7 +70,16 @@ const Login = ({ onLoginSuccess, onBack }) => {
           </div>
 
           <div>
-            <label style={{ color: '#E2E8F0', fontSize: '0.85rem', display: 'block', marginBottom: '0.5rem' }}>Password</label>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <label style={{ color: '#E2E8F0', fontSize: '0.85rem' }}>Password</label>
+              <button 
+                type="button" 
+                onClick={() => alert("Password reset link has been sent to your email!")} 
+                style={{ background: 'transparent', border: 'none', color: '#F97316', fontSize: '0.8rem', cursor: 'pointer', padding: 0 }}
+              >
+                Forgot Password?
+              </button>
+            </div>
             <div style={{ position: 'relative' }}>
               <Lock size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#64748B' }} />
               <input 

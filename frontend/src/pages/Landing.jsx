@@ -1,7 +1,7 @@
 import React from 'react';
 import { Truck, Shield, Clock, Zap, ArrowRight, Package, UserCheck, Search } from 'lucide-react';
 
-const Landing = ({ onGetStarted }) => {
+const Landing = ({ onGetStarted, onLogin }) => {
   return (
     <div style={{ minHeight: '100vh', background: '#0F172A', color: 'white', overflowX: 'hidden' }}>
       {/* Background Decoration */}
@@ -23,7 +23,7 @@ const Landing = ({ onGetStarted }) => {
         </div>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           <button 
-            onClick={() => onGetStarted()} 
+            onClick={() => onLogin()} 
             className="nav-link"
             style={{ background: 'transparent', border: 'none', color: '#94A3B8', cursor: 'pointer', fontWeight: '600', fontSize: '0.95rem' }}
           >
@@ -100,18 +100,6 @@ const Landing = ({ onGetStarted }) => {
             }}
           >
             Launch Platform <ArrowRight size={20} />
-          </button>
-          <button 
-            className="btn-outline"
-            style={{ 
-            padding: '1rem 2rem', 
-            fontSize: '1.1rem', 
-            background: 'transparent', 
-            border: '1px solid #334155',
-            color: 'white',
-            transition: 'all 0.2s ease'
-          }}>
-            Watch Demo
           </button>
         </div>
       </header>

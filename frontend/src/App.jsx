@@ -68,7 +68,7 @@ function App() {
 
   if (loading) return <div style={{ background: '#0F172A', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>Loading ShipWise...</div>;
 
-  if (page === 'landing') return <Landing onGetStarted={() => setPage('login')} />;
+  if (page === 'landing') return <Landing onGetStarted={() => setPage('register')} onLogin={() => setPage('login')} />;
   if (page === 'login') return <Login onLoginSuccess={handleAuthSuccess} onBack={() => setPage('landing')} />;
   if (page === 'register') return <Register onRegisterSuccess={handleAuthSuccess} onBack={() => setPage('login')} />;
 

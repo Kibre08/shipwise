@@ -109,6 +109,7 @@ const Register = ({ onRegisterSuccess, onBack }) => {
               <input 
                 type={showPassword ? "text" : "password"} 
                 required
+                minLength="6"
                 placeholder="••••••••"
                 style={{ width: '100%', padding: '0.75rem 3rem 0.75rem 3rem', background: '#0F172A', border: '1px solid #334155', borderRadius: '8px', color: 'white' }}
                 value={formData.password}
