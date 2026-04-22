@@ -21,8 +21,10 @@ function App() {
   useEffect(() => {
     const restoreSession = async () => {
       try {
+        const token = localStorage.getItem('token');
         const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/auth/me', {
-          withCredentials: true
+          withCredentials: true,
+          headers: token ? { 'x-auth-token': token } : {}
         });
         setUser(res.data);
         // If they were on a guest page but are logged in, maybe move to dashboard?
@@ -44,6 +46,7 @@ function App() {
       setPage(switchPage);
       return;
     }
+    if (data.token) localStorage.setItem('token', data.token);
     setUser(data.user);
     setPage('dashboard');
   };
@@ -56,6 +59,7 @@ function App() {
     } finally {
       setUser(null);
       setPage('landing');
+      localStorage.removeItem('token');
       sessionStorage.clear();
       // Force a hard reload to ensure all memory state is wiped
       window.location.href = '/';

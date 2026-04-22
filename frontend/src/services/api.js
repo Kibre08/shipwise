@@ -5,8 +5,14 @@ const api = axios.create({
     withCredentials: true
 });
 
-// Interceptor removed - cookies are handled automatically by the browser
-
+// Interceptor to attach token for mobile compatibility
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        config.headers['x-auth-token'] = token;
+    }
+    return config;
+});
 export const createShipment = (data) => api.post('/create', data);
 export const createSenderShipment = (data) => api.post('/sender/create', data);
 export const trackShipment = (id) => api.get(`/track/${id}`);

@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 
-        res.status(201).json({ user: { id: user._id, name: user.name, role: user.role } });
+        res.status(201).json({ token, user: { id: user._id, name: user.name, role: user.role } });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 
-        res.json({ user: { id: user._id, name: user.name, role: user.role } });
+        res.json({ token, user: { id: user._id, name: user.name, role: user.role } });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -65,7 +65,7 @@ router.post('/logout', (req, res) => {
 // Get User Profile (Me)
 router.get('/me', async (req, res) => {
     try {
-        const token = req.cookies.accessToken;
+        const token = req.cookies.accessToken || req.header('x-auth-token');
         if (!token) return res.status(401).json({ message: 'No token, authorization denied' });
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
